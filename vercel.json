@@ -1,0 +1,6 @@
+{
+  "framework": "nextjs",
+  "rootDirectory": "geotracker/apps/web",
+  "buildCommand": "pnpm build",
+  "outputDirectory": ".next"
+}
