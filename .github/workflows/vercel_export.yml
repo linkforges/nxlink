@@ -59,10 +59,11 @@ jobs:
       - name: Deploy to Vercel (pinned CLI, debug)
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        working-directory: geotracker
         run: |
           echo "Using VERCEL_TOKEN (present): ${VERCEL_TOKEN:+yes}"
           vercel --version
-          vercel --debug --prod --confirm --token $VERCEL_TOKEN --cwd geotracker/apps/web
+          vercel --debug --prod --confirm --token $VERCEL_TOKEN
 
 # Notes:
 # - Create a Vercel personal token and save it as `VERCEL_TOKEN` in GitHub Secrets.
