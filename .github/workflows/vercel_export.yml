@@ -13,10 +13,12 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22.x'
 
-      - name: Enable corepack
-        run: corepack enable
+      - name: Enable corepack and prepare pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@11.9.0 --activate
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
