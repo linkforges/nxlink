@@ -1,4 +1,6 @@
 {
-  "buildCommand": "pnpm --filter @nexatrack/web build",
+  "framework": "nextjs",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "buildCommand": "pnpm build",
   "outputDirectory": "apps/web/.next"
 }

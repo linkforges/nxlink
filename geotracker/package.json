@@ -9,6 +9,11 @@
     "typecheck": "turbo run typecheck",
     "format": "prettier --write ."
   },
+  "dependencies": {
+    "next": "15.0.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
   "devDependencies": {
     "prettier": "^3.3.3",
     "turbo": "^2.1.1",
