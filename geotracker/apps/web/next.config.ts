@@ -3,6 +3,9 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  poweredByHeader: false,
+  compress: true,
+  output: 'standalone',
   webpack(config) {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),

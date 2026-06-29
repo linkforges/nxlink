@@ -1,4 +1,5 @@
-const API = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000';
+const API_BASE_URL = (process.env.NEXT_PUBLIC_API_URL ?? process.env.NEXT_PUBLIC_API_BASE_URL ?? '').replace(/\/$/, '') ||
+  (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:4000');
 
 async function parseResponse<T>(response: Response): Promise<T> {
   const text = await response.text();
@@ -21,12 +22,12 @@ async function parseResponse<T>(response: Response): Promise<T> {
 }
 
 export async function apiGet<T>(path: string): Promise<T> {
-  const r = await fetch(`${API}${path}`, { cache: 'no-store' });
+  const r = await fetch(`${API_BASE_URL}${path}`, { cache: 'no-store' });
   return parseResponse<T>(r);
 }
 
 export async function apiPost<T>(path: string, body: unknown): Promise<T> {
-  const r = await fetch(`${API}${path}`, {
+  const r = await fetch(`${API_BASE_URL}${path}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body)

@@ -1,0 +1,36 @@
+name: Deploy `geotracker/apps/web` to Vercel
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build `geotracker/apps/web`
+        working-directory: geotracker/apps/web
+        run: pnpm build
+
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: npx vercel --prod --confirm --token $VERCEL_TOKEN --cwd geotracker/apps/web
+
+# Notes:
+# - Create a Vercel personal token and save it as `VERCEL_TOKEN` in GitHub Secrets.
+# - Prefer adding `DATABASE_URL` and other env vars directly in the Vercel project settings.
+# - If you must pass an env var from GitHub, consider adding it as a Vercel project variable instead of exposing it in the action logs.
