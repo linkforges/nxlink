@@ -1,6 +1,0 @@
-{
-  "framework": "nextjs",
-  "installCommand": "corepack enable && corepack pnpm install --frozen-lockfile",
-  "buildCommand": "corepack enable && corepack pnpm build",
-  "outputDirectory": ".next"
-}
