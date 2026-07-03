@@ -1,4 +1,4 @@
-name: Deploy `geotracker/apps/web` to Vercel
+name: Deploy `geotracker` to Vercel
 
 on:
   push:
